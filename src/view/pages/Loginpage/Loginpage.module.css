@@ -1,0 +1,53 @@
+.pageContent {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.loginForm input {
+  padding: 8px;
+  width: 220px;
+  border-radius: 8px;
+  border: none;
+}
+
+.loginForm button {
+  background-color: #3ea6ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.registerText {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.registerText a {
+  color: #3ea6ff;
+  text-decoration: none;
+}
+.login-page {
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  color: white;
+  text-align: center;
+  flex: 1;
+  overflow: auto;
+}

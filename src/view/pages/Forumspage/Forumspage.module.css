@@ -1,0 +1,18 @@
+.header {
+    background-color: #0c121f;
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .circle {
+    background-color: #3ea6ff;
+    border-radius: 50%;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 6px;
+  }

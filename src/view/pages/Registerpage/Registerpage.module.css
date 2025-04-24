@@ -1,0 +1,58 @@
+.container {
+  padding: 40px;
+  text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  color: #888;
+  margin-bottom: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+input {
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  background-color: #ddd;
+  width: 200px;
+  font-size: 14px;
+}
+
+.registerBtn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.header {
+  background-color: #0e1a2b;
+  padding: 10px 20px;
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.circle {
+  background-color: #3ea6ff;
+  border-radius: 50%;
+  padding: 4px 10px;
+  margin-right: 6px;
+}
