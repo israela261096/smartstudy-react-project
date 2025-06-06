@@ -1,55 +1,58 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./view/components/Navbar/Navbar";
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation
+} from "react-router-dom";
 
-import Loginpage from "./view/pages/Loginpage/Loginpage";
-import Registerpage from "./view/pages/Registerpage/Registerpage";
-import Dashboardpage from "./view/pages/Dashboardpage/Dashboardpage";
-import Taskspage from "./view/pages/Taskspage/Taskspage";
-import Summariespage from "./view/pages/Summariespage/Summariespage";
-import Forumspage from "./view/pages/Forumspage/Forumspage";
-import Supportpage from "./view/pages/Supportpage/Supportpage";
-import Profilepage from "./view/pages/Profilepage/Profilepage";
+import Navbar from "./view/components/Navbar/Navbar";
+
+
 import Adminpage from "./view/pages/Adminpage/Adminpage";
-import Homepage from "./view/pages/Homepage/Homepage";
+import Dashboardpage from "./view/pages/Dashboardpage/Dashboardpage";
+import ForumsPage from "./view/pages/Forumspage/Forumspage";
+import HomePage from "./view/pages/Homepage/Homepage";
+import LoginPage from "./view/pages/Loginpage/Loginpage";
+import RegisterPage from "./view/pages/Registerpage/Registerpage";
+import SettingsPage from "./view/pages/Settingspage/Settingspage";
+import SummariesPage from "./view/pages/Summariespage/Summariespage";
+import SupportPage from "./view/pages/Supportpage/Supportpage";
+
+function AppWrapper() {
+  const location = useLocation();
+
+
+  const noNavbarPaths = ["/", "/login", "/register"];
+  const shouldShowNavbar = !noNavbarPaths.includes(location.pathname);
+
+  return (
+    <>
+      {shouldShowNavbar && <Navbar />}
+
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+
+        
+        <Route path="/homepage" element={<HomePage />} />
+        <Route path="/summaries" element={<SummariesPage />} />
+        <Route path="/support" element={<SupportPage />} />
+        <Route path="/Settings" element={<SettingsPage />} />
+        <Route path="/forums" element={<ForumsPage />} />
+        <Route path="/dashboard" element={<Dashboardpage />} />
+        <Route path="/Adminpage" element={<Adminpage />} />
+
+        <Route path="*" element={<LoginPage />} />
+      </Routes>
+    </>
+  );
+}
 
 function App() {
   return (
     <Router>
-      <div className="page-container">
-
-        <div className="top-section">
-          <div className="logo">
-            SmartStudy <span className="circle">S</span>
-          </div>
-
-          <Navbar />
-        </div>
-
-        <header className="header">
-          <div className="main-content">
-            <main className="main">
-              <Routes>
-                <Route path="/loginpage" element={<Loginpage />} />
-                <Route path="/registerpage" element={<Registerpage />} />
-                <Route path="/dashboardpage" element={<Dashboardpage />} />
-                <Route path="/taskspage" element={<Taskspage />} />
-                <Route path="/summariespage" element={<Summariespage />} />
-                <Route path="/forumspage" element={<Forumspage />} />
-                <Route path="/supportpage" element={<Supportpage />} />
-                <Route path="/profilepage" element={<Profilepage />} />
-                <Route path="/adminpage" element={<Adminpage />} />
-                <Route path="/homepage" element={<Homepage />} />
-              </Routes>
-            </main>
-          </div>
-        </header>
-
-        <footer className="footer">
-          © 2025 SmartStudy | כל הזכויות שמורות
-        </footer>
-
-      </div>
+      <AppWrapper />
     </Router>
   );
 }

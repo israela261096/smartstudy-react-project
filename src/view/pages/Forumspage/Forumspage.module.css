@@ -1,18 +1,97 @@
-.header {
-    background-color: #0c121f;
-    color: white;
-    padding: 10px 20px;
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.page {
+  min-height: 100vh; /* תופס גובה מלא של חלון הדפדפן */
+  width: 100%;
+  color: white;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 100px 60px 0; /* ריווח עליון יישאר, תחתית תתרוקן כדי שהפוטר ידחף מטה */
+  box-sizing: border-box;
+}
+
+.pageContainer {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  /* הסרנו את ה־ top: 120px; כדי שהקונטיינר לא ידחף מעלה */
+}
+
+.pageTitle {
+  font-size: 28px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.description {
+  font-size: 16px;
+  color: #cbd5e1;
+  margin-bottom: 30px;
+  text-align: center;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* שתי עמודות שוות רוחב */
+  gap: 20px;                             /* ריווח בין השורות והעמודות */
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: #1e293b;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(42, 59, 146, 0.073);
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 1024px) {
+  .card {
+    flex: 0 1 calc(50% - 20px);
   }
-  
-  .circle {
-    background-color: #3ea6ff;
-    border-radius: 50%;
-    color: white;
-    padding: 5px 10px;
-    margin-right: 6px;
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex: 0 1 100%;
   }
+}
+
+.footer {
+  width: 100%;
+  padding: 12px 0;    
+  border-top: 1px solid #E5E7EB;  
+  color: #4B5563;                   
+  font-size: 14px;
+  text-align: center;               
+  direction: rtl;                   
+  box-sizing: border-box;
+  width: 100vw;
+
+}
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 13px;
+    padding: 16px 0; 
+  }
+}

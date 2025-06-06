@@ -1,45 +1,128 @@
-
-css
-Copy
-Edit
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #e6f7ff;
-  padding: 10px 0;
-  z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navlist {
+.page {
+  min-height: 100vh;
+  color: white;
+  padding: 0;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0 20px;
+  transform: translateX(100px) translateY(20px);
+}
+
+.welcome {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: right;
+  width: 100%;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+.card {
+  background-color: #1e293b;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: right;
+  flex: 0 0 calc(33.33% - 16px);
+  max-width: calc(33.33% - 16px);
+  box-sizing: border-box;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  gap: 8px;
+  text-align: right;
+}
+
+.card p, .card li {
+  font-size: 14px;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+}
+
+.card ul {
   list-style: none;
-  margin: 0;
   padding: 0;
-  gap: 40px;
-}
-
-.navlist li {
-  display: inline-block;
-}
-
-.navlist li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  font-size: 16px;
-  transition: color 0.3s;
-}
-
-.navlist li a:hover {
-  color: #007acc;
-}
-
-body {
-  padding-top: 60px;
   margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    flex: 0 0 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+  }
+  
+  .container {
+    transform: translateX(50px) translateY(10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .container {
+    transform: translateX(0) translateY(0);
+    padding: 0 15px;
+  }
+}
+
+.footer {
+
+  width: 100vw;
+
+
+  position: static; 
+  bottom: 0;
+  left: 0;
+
+  border-top: 1px solid #E5E7EB;
+
+  padding: 12px 0;
+
+  text-align: center;
+  font-size: 14px;
+  color: #4B5563;
+
+  direction: rtl;
+
+  box-sizing: border-box;
+  margin-top: auto;  
+
+}
+
+.page.withFixedFooter {
+  padding-bottom: 40px; 
+}
+
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 13px;
+    padding: 10px 0;
+  }
 }

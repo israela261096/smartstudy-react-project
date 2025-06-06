@@ -1,0 +1,454 @@
+.page {
+  width: 100vw;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 80px 20px 40px 20px;
+  box-sizing: border-box;
+  margin: 0;
+  padding-bottom: 120px;
+}
+
+.pageContainer {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  top: 10%;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  max-width: 800px;
+}
+
+.pageTitle {
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 40px;
+  text-align: center;
+  width: 100%;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.mainCard {
+  background: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 8px;           /* הקטנתי מ-10px ל-8px */
+  width: 100%;
+  max-width: 500px;       /* הקטנתי מ-600px ל-500px */
+  box-sizing: border-box;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #1f2937;
+  text-align: center;
+}
+
+.mainCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cardIcon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #6b7280;
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.cardSubtitle {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  color: #1f2937;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  text-align: right;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #6b46c1;
+  box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+  text-align: right;
+}
+
+.searchBtn {
+  background: linear-gradient(135deg, #6b46c1, #805ad5);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);
+  width: 100%;
+}
+
+.searchBtn:hover {
+  background: linear-gradient(135deg, #553c9a, #6b46c1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 70, 193, 0.4);
+}
+
+.addSummaryBtn {
+  background: linear-gradient(135deg, #6b46c1, #805ad5);
+  border: none;
+  border-radius: 8px;
+  padding: 16px 32px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);
+  width: 100%;
+  max-width: 300px;
+}
+
+.addSummaryBtn:hover {
+  background: linear-gradient(135deg, #553c9a, #6b46c1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 70, 193, 0.4);
+}
+
+.summariesResults {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.summariesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.summaryItem {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.summaryItem:hover {
+  background: linear-gradient(135deg, #334155, #475569);
+  transform: translateY(-1px);
+}
+
+.summaryInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.summaryInfo strong {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.uploadDate {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.downloadLink {
+  background: linear-gradient(135deg, #3ea6ff, #60baff);
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.downloadLink:hover {
+  background: linear-gradient(135deg, #2196f3, #3ea6ff);
+  transform: translateY(-1px);
+}
+
+.noSummaries {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(148, 163, 184, 0.1);
+  border-radius: 8px;
+}
+
+.uploadForm {
+  background: linear-gradient(135deg, #2d3748, #4a5568);
+  border: 1px solid #4a5568;
+  border-radius: 16px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.uploadForm h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border: 2px solid #374151;
+  border-radius: 8px;
+  background-color: #0f172a;
+  color: #ffffff;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  text-align: right;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #6b46c1;
+  box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.1);
+}
+
+.inputField::placeholder {
+  color: #6b7280;
+  text-align: right;
+}
+
+.fileInput {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border: 2px solid #374151;
+  border-radius: 8px;
+  background-color: #0f172a;
+  color: #ffffff;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.fileInput:focus {
+  outline: none;
+  border-color: #6b46c1;
+}
+
+.selectedFileText {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.progressText {
+  color: #6b46c1;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.uploadActions {
+  display: flex;
+  gap: 4px;               /* הקטנו מ־8px ל־4px */
+  justify-content: center;
+  margin-bottom: 12px;    /* ריווח תחתון קטן כדי שלא ייגע בפוטר */
+}
+
+.uploadBtn {
+  background: linear-gradient(135deg, #6b46c1, #805ad5);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);
+  flex: 1;
+}
+
+.uploadBtn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #553c9a, #6b46c1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 70, 193, 0.4);
+}
+
+.uploadBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cancelBtn {
+  background: linear-gradient(135deg, #2d3748, #4a5568);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.3);
+  flex: 1;
+}
+
+.cancelBtn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1a202c, #2d3748);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 55, 72, 0.4);
+}
+
+.cancelBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page {
+    padding: 60px 15px 30px 15px;
+  }
+  
+  .pageTitle {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .mainCard {
+    padding: 30px 20px;
+  }
+  
+  .cardTitle {
+    font-size: 20px;
+  }
+  
+  .cardSubtitle {
+    font-size: 14px;
+  }
+  
+  .uploadForm {
+    padding: 20px;
+  }
+  
+  .uploadActions {
+    flex-direction: column;
+  }
+  
+  .summaryItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .downloadLink {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 50px 10px 20px 10px;
+  }
+  
+  .pageTitle {
+    font-size: 24px;
+  }
+  
+  .mainCard {
+    padding: 20px 15px;
+  }
+  
+  .cardTitle {
+    font-size: 18px;
+  }
+  
+  .uploadForm {
+    padding: 15px;
+  }
+}
+
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid #334155;
+  padding: 16px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #e2e8f0;
+  direction: rtl;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* בפוטר יש רווח תחתון שנוסף אוטומטית כדי שהפוטר לא יכסה תוכן */
+.page.withFixedFooter {
+  padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 13px;
+    padding: 12px 0;
+  }
+}

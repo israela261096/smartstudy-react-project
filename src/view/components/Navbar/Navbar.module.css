@@ -1,52 +1,90 @@
 .navbar {
   position: fixed;
   top: 0;
-  right: 0;
   left: 0;
+  right: 0;
   height: 70px;
-  background-color: #e6f6ff;
+  background-color: #e6f6ff; 
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: center; 
   padding: 0 40px;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   direction: rtl;
 }
 
+.navLinks {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 24px;
+  align-items: center; 
+}
+
+
 .logo {
-  font-weight: bold;
-  font-size: 20px;
-  color: #0056b3;
   display: flex;
   align-items: center;
+  
+  margin-left: auto;
+  
+  color: #0056B3;
+  
+  font-size: 24px;
+  font-weight: 700;
+  
+  cursor: pointer;
+  
+  margin-right: -30px; 
 }
 
 .circle {
   background-color: #3ea6ff;
   border-radius: 50%;
   padding: 4px 10px;
-  margin-left: 8px;
+  margin-left: 8px; 
   color: white;
   font-weight: bold;
 }
 
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
+.logoText {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0056b3;
 }
 
-.links a {
-  text-decoration: none;
-  color: #0056b3;
-  font-weight: 500;
+
+.navLink {
   font-size: 14px;
+  font-weight: 500;
+  color: #0056b3;
+  text-decoration: none;
   white-space: nowrap;
   transition: color 0.2s ease;
 }
 
-.links a:hover {
+.navLink:hover {
   color: #007bff;
+}
+
+.active {
+  color: #007bff;
+}
+
+
+.logoutButton {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0056b3;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.logoutButton:hover {
+  color: #007bff;
+}
+
+:global(body) {
+  padding-top: 70px;
 }

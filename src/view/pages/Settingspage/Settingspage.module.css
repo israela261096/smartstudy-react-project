@@ -1,5 +1,232 @@
-.pageContent {
-    padding-top: 100px;
-    color: white;
-    text-align: center;
+.settingsPage {
+  padding-top: 100px;
+  padding-bottom: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.pageTitle {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  margin-top: 0;
+  font-weight: 600;
+  color: #e2e8f0;
+  letter-spacing: 0.5px;
+}
+
+.settingsCard {
+  background-color: #1e293b;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  width: 550px;
+  flex-direction: column;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  direction: rtl;
+  text-align: right;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #334155;
+} 
+
+.section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  margin-top: 0px;       
+  margin-bottom: 16px;    
+  color: #38bdf8;
+  padding-bottom: 0;      
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionTitle:before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background-color: #38bdf8;
+  border-radius: 2px;
+}
+
+.settingsButton {
+  background: none;
+  border: none;
+  color: #cbd5e1;
+  text-align: right;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: -20px;
+}
+
+.settingsButton:after {
+  content: '›';
+  font-size: 24px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.2s ease;
+}
+
+.settingsButton:hover {
+  background-color: #334155;
+  color: white;
+  padding-right: 20px;
+}
+
+.settingsButton:hover:after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.dangerButton {
+  color: #f87171;
+}
+
+.dangerButton:hover {
+  background-color: rgba(248, 113, 113, 0.1);
+}
+
+.settingsOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 6px;
+  background-color: #263448;
+  margin-bottom: 8px;
+}
+
+.settingsOption:hover {
+  background-color: #2d3b4d;
+}
+
+.settingsOption label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #38bdf8;
+}
+
+.select {
+  background-color: #334155;
+  color: white;
+  padding: 10px 16px;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  min-width: 150px;
+  transition: border-color 0.2s ease;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.column {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .settingsCard {
+    padding: 20px;
+    width: 100%;
   }
+   
+  .row {
+    flex-direction: column;
+    gap: 12px;
+  }
+   
+  .settingsOption {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+   
+  .select {
+    width: 100%;
+  }
+}
+
+.footer {
+
+  width: 100vw;
+
+
+  position: static; 
+  bottom: 0;
+  left: 0;
+
+  border-top: 1px solid #E5E7EB;
+
+  padding: 12px 0;
+
+  text-align: center;
+  font-size: 14px;
+  color: #4B5563;
+
+  direction: rtl;
+
+  box-sizing: border-box;
+  margin-top: auto;  
+
+}
+
+.page.withFixedFooter {
+  padding-bottom: 40px; 
+}
+
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 13px;
+    padding: 10px 0;
+  }
+}

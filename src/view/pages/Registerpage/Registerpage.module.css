@@ -1,58 +1,380 @@
-.container {
-  padding: 40px;
-  text-align: center;
+/* איפוס כללי */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.title {
-  font-size: 20px;
-  color: #888;
-  margin-bottom: 30px;
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-.form {
+/* 1. עמוד ההרשמה הראשי - מרכוז מושלם */
+.registerPage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  padding: 0;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* 2. הכרטיס עצמו בתוך העמוד */
+.formContainer {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-radius: 16px;
+  padding: 50px 60px;
+  width: 90%;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
   align-items: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid #334155;
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
-.row {
-  display: flex;
+/* 3. הכותרת של העמוד */
+.pageTitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #f8fafc;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+/* 4. הטופס עצמו: גריד תלת-עמודי */
+.registerForm {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 10px;
 }
 
-input {
-  padding: 10px;
-  border-radius: 12px;
-  border: none;
-  background-color: #ddd;
-  width: 200px;
-  font-size: 14px;
-}
-
-.registerBtn {
-  margin-top: 20px;
-  padding: 12px 20px;
-  background-color: #ccc;
-  border: none;
-  border-radius: 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.header {
-  background-color: #0e1a2b;
-  padding: 10px 20px;
+/* 5. שדות הקלט: עיצוב אחיד */
+.registerForm input,
+.registerForm select {
+  padding: 14px 16px;
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #64748b;
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  color: #1e293b;
   text-align: right;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  box-sizing: border-box;
+  direction: rtl;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
+/* פלייסהולדר */
+.registerForm input::placeholder {
+  color: #64748b;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+/* פוקוס על שדות הקלט */
+.registerForm input:focus,
+.registerForm select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15), inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+}
+
+/* הובר על שדות הקלט */
+.registerForm input:hover,
+.registerForm select:hover {
+  border-color: #475569;
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+}
+
+/* סלקטים */
+.registerForm select {
+  cursor: pointer;
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234b5563' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: left 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-left: 40px;
+}
+
+.registerForm select:focus {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236366f1' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: left 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+/* 6. לחצן ההרשמה: יתפרס על שלושת העמודות */
+.registerForm button {
+  grid-column: span 3;
+  margin-top: 40px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 18px;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.registerForm button:hover {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.4);
+}
+
+.registerForm button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+/* 7. הפוטר התחתון */
+.footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  color: #94a3b8;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
+/* 8. התאמה למסכים בינוניים */
+@media (max-width: 1024px) {
+  .formContainer {
+    max-width: 700px;
+    padding: 40px 40px;
+  }
+  
+  .registerForm {
+    gap: 20px;
+  }
+}
+
+/* 9. התאמה למסכים קטנים */
+@media (max-width: 768px) {
+  .registerPage {
+    padding: 0;
+  }
+  
+  .formContainer {
+    width: 95%;
+    padding: 30px 20px;
+    max-width: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .pageTitle {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .registerForm {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .registerForm button {
+    grid-column: span 1;
+    margin-top: 30px;
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+  
+  .registerForm input,
+  .registerForm select {
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+}
+
+/* 10. התאמה למסכים קטנים מאוד */
+@media (max-width: 480px) {
+  .formContainer {
+    width: 98%;
+    padding: 25px 15px;
+    border-radius: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .pageTitle {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .registerForm {
+    gap: 12px;
+  }
+  
+  .registerForm input,
+  .registerForm select {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .registerForm button {
+    margin-top: 25px;
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+}
+
+/* 11. התאמה למסכים גדולים מאוד */
+@media (min-height: 900px) and (min-width: 1200px) {
+  .registerPage {
+    justify-content: center;
+  }
+  
+  .formContainer {
+    max-width: 1000px;
+    padding: 60px 80px;
+  }
+  
+  .pageTitle {
+    font-size: 32px;
+    margin-bottom: 50px;
+  }
+  
+  .registerForm {
+    gap: 28px;
+    max-width: 900px;
+  }
+  
+  .registerForm input,
+  .registerForm select {
+    padding: 16px 18px;
+    font-size: 17px;
+  }
+  
+  .registerForm button {
+    margin-top: 50px;
+    padding: 18px 28px;
+    font-size: 19px;
+  }
+}
+
+/* 12. אנימציות כניסה */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.formContainer {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* שיפורים נוספים - הסרת הגבולות האדומים/ירוקים */
+.registerForm input {
+  border: 2px solid #64748b;
+}
+
+.registerForm input:focus {
+  border-color: #6366f1;
+}
+
+.registerForm input:hover {
+  border-color: #475569;
+}
+
+/* טיפים לנגישות */
+.registerForm input:focus,
+.registerForm select:focus,
+.registerForm button:focus {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* מרכוז נוסף עבור מסכים קטנים */
+@media (max-height: 700px) {
+  .registerPage {
+    justify-content: flex-start;
+    padding-top: 50px;
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: #e6f6ff; 
+  display: flex;
+  align-items: center; 
+  padding: 0 40px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  direction: rtl;
+}
+
 
 .circle {
   background-color: #3ea6ff;
   border-radius: 50%;
   padding: 4px 10px;
-  margin-right: 6px;
+  margin-left: 8px; 
+  color: white;
+  font-weight: bold;
+
+  transform: translateX(30px);
+}
+
+.logoText {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0056b3;
+
+
+  transform: translateX(30px);
 }
