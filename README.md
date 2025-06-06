@@ -1,12 +1,48 @@
-# React + Vite
+# SmartStudy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## תיאור קצר של הפרויקט
+SmartStudy היא פלטפורמת למידה מקוונת המאפשרת לסטודנטים לשתף סיכומים, לנהל פורומים, ולנהל משתמשים ומנהלי מערכת בעזרת לוחות בקרה וגרפים אינטראקטיביים. האפליקציה מבוססת React ומשתמשת ב-Firebase עבור אימות משתמשים (Authentication), אחסון קבצים (Storage) ושליפת/שמירת נתונים (Firestore).
 
-Currently, two official plugins are available:
+## סקירה של הפיצ’רים המרכזיים
+- **אימות משתמשים (Authentication)**
+  - התחברות והרשמה עם אימייל וסיסמה  
+  - טיפול בשגיאות נפוצות (כתובת אימייל לא חוקית, משתמש לא קיים, סיסמה שגויה)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **ניהול משתמשים (Admin Dashboard)**
+  - גרפים המציגים את מספר המשתמשים, סיכומים שהועלו ומשתמשים פעילים היום  
+  - כפתורים המסכמים: סך-כל משתמשים רשומים, סיכומים במערכת, פוסטים בפורומים, משתמשים פעילים היום  
 
-## Expanding the ESLint configuration
+- **העלאת סיכומים (Summaries)**
+  - העלאת קבצי PDF ל-Firebase Storage  
+  - הצגת התקדמות העלאה  
+  - שמירת פרטי הקובץ ב-Firestore (UID, שם הקורס, שם הקובץ, תאריך)  
+  - חיפוש סיכומים לפי שם הקורס
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **פורומים (Forums)**
+  - יצירת פוסטים, שאלות ותשובות  
+  - הצגת רשימת נושאים לפי קטגוריות
+
+- **עמודי נוספים**
+  - עמוד **HomePage** עם פתיח (הטקסט “הלמידה שלך, תחת השליטה שלך”)  
+  - עמוד **Support** עם טופס יצירת קשר  
+  - עמוד **Settings** לעריכת פרטי משתמש  
+  - עמוד **My Summaries** להצגת כל הקבצים שהמשתמש העלה  
+
+- **עיצוב רספונסיבי**
+  - מתאים לכל רוחבי מסך (מחשבים שולחניים ועד טלפונים ניידים)  
+  - שימוש ב-CSS Modules וב-Recharts ליצירת גרפים דינמיים  
+
+## דמו חי של האתר
+אין כרגע דמו חי פעיל.  
+
+## הוראות התקנה והרצה מקומית
+
+### דרישות מקדימות
+1. Node.js (גרסה 16 או חדשה יותר)  
+2. npm (או yarn)  
+3. חשבון Firebase (להגדרת פרויקט חדש)  
+
+### 1. קלון המאגר (Clone repository)
+```bash
+git clone https://github.com/israela261096/smartstudy-react-project.git
+cd smartstudy-react-project
