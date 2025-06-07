@@ -1,12 +1,37 @@
-# React + Vite
+# SmartStudy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Short description**  
+SmartStudy is a React-based learning platform that lets students share summaries, ask questions in forums, find study partners, and get technical support— all in one place.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- **Course Summaries**  
+  – Browse, upload and download community-submitted course summaries.  
+- **Forums**  
+  – Ask questions, share tips, report technical issues, or find study partners.  
+- **Support Center**  
+  – FAQs, user guide, contact form, and a full site map.  
+- **Personal Dashboard**  
+  – View your uploaded summaries, saved posts, and account settings.  
+- **Admin Panel**  
+  – Site administrators can view user statistics, manage users, and monitor activity.  
+- **Responsive Design**  
+  – Fully mobile-friendly, with RTL (Hebrew) support.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📺 Live Demo
+
+If a live demo is available, link it here:  
+[https://your-demo-url.com](https://your-demo-url.com)
+
+---
+
+## 🛠️ Local Installation & Run
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/your-username/smartstudy-react-project.git
+   cd smartstudy-react-project
