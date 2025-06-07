@@ -33,5 +33,4 @@ If a live demo is available, link it here:
 
 1. **Clone the repo**  
    ```bash
-   git clone https://github.com/your-username/smartstudy-react-project.git
-   cd smartstudy-react-project
+   git clone https://github.com/israela261096/smartstudy-react-project.git
