@@ -1,54 +1,47 @@
 .homepage {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  color: white;
+ width: 100vw;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 80px 20px 40px 20px;
   box-sizing: border-box;
-  position: absolute;
-  top: 20%; 
-  left: 50%;
-  transform: translate(-50%, 0); 
+  margin: 0;
+  padding-bottom: 120px;
+  direction: rtl;
 }
 
 .buttonsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr); /* 5 עמודות לכל הכפתורים */
   gap: 20px;
   width: 100%;
-  max-width: 900px;
-  margin-top: 60px;     
+  max-width: 100%;
+  margin-top: 60px;
   margin-bottom: 100px;
+  padding: 0 20px;
 }
 
 .menuButton {
-  padding: 20px 40px;          
+  padding: 25px 20px;
   background-color: #1e293b;
   color: white;
   border: 1px solid #cbd5e1;
-  border-radius: 10px;         
-  font-size: 18px;              
+  border-radius: 12px;
+  font-size: 18px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  min-width: 200px;          
+  transition: all 0.3s ease;
+  min-width: auto;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .menuButton:hover {
   background-color: #3ea6ff;
   color: white;
+  transform: translateY(-2px); /* אפקט hover */
 }
 
-.footer {
-  margin-top: 30px;
-  padding: 1rem;
-  background-color: #0f172a;
-  color: white;
-  width: 100%;
-  text-align: center;
-  font-size: 0.8rem;
-}
 .mainContent {
   flex: 1;
   display: flex;
@@ -57,42 +50,112 @@
   align-items: center;
   padding: 40px;
   border-radius: 16px;
-  width: 90%;
-  max-width: 1200px;
+  width: 100%; /* התפרסות מלאה */
+  max-width: 100%; /* הסרת הגבלת הרוחב */
 }
 
 .footer {
-
-  width: 100vw;
-
-
-  position: static; 
-  bottom: 0;
-  left: 0;
-
-  border-top: 1px solid #E5E7EB;
-
-  padding: 12px 0;
-
+  width: 100%;
+  background-color: rgba(30, 41, 59, 0.95);
+  border-top: 1px solid #334155;
+  padding: 16px 0;
   text-align: center;
   font-size: 14px;
-  color: #4B5563;
-
-  direction: rtl;
-
+  color: #e2e8f0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   box-sizing: border-box;
-  margin-top: auto;  
-
+  z-index: 1000;
 }
 
 .page.withFixedFooter {
-  padding-bottom: 40px; 
+  padding-bottom: 40px;
 }
 
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .buttonsGrid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    padding: 0 15px;
+  }
+  
+  .menuButton {
+    padding: 20px 15px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .buttonsGrid {
+    grid-template-columns: repeat(3, 1fr); /* 3 עמודות במסכים קטנים יותר */
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  .menuButton {
+    padding: 25px 20px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .buttonsGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 עמודות במסכים בינוניים */
+    gap: 15px;
+    padding: 0 15px;
+  }
+  
+  .menuButton {
+    padding: 20px 15px;
+    font-size: 16px;
+  }
+}
 
 @media (max-width: 768px) {
+  .homepage {
+    padding: 15px;
+  }
+  
+  .buttonsGrid {
+    grid-template-columns: 1fr; /* עמודה אחת במסכים קטנים */
+    gap: 15px;
+    padding: 0 10px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .menuButton {
+    padding: 18px 20px;
+    font-size: 16px;
+    min-width: auto;
+    width: 100%;
+  }
+  
   .footer {
     font-size: 13px;
     padding: 10px 0;
+  }
+  
+  .mainContent {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage {
+    padding: 10px;
+  }
+  
+  .buttonsGrid {
+    gap: 12px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .menuButton {
+    padding: 15px 18px;
+    font-size: 15px;
   }
 }

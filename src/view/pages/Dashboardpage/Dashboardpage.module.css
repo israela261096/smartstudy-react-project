@@ -1,11 +1,11 @@
 .page {
-  min-height: 100vh;
-  color: white;
-  padding: 0;
+  width: 100vw;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 80px 20px 40px 20px;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  padding-bottom: 120px;
 }
 
 .container {

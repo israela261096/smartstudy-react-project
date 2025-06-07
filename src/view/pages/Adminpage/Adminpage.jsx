@@ -28,6 +28,7 @@ function AdminPage() {
   const [degreeData, setDegreeData] = useState([]); // חלוקת משתמשים לפי תואר
   const [searchTerm, setSearchTerm] = useState('');
 
+  // בוקס ראשי – טוען הכל בהעלאה
   useEffect(() => {
     fetchUsers();
     fetchSummaries();
@@ -66,7 +67,7 @@ function AdminPage() {
     }
   };
 
-  // שולף אוסף נפרד activeUsersToday (הנחה: בשדה זה נשמרים רק המשתמשים שהתחברו היום)
+  // שולף אוסף נפרד activeUsersToday
   const fetchActiveUsers = async () => {
     try {
       const snapshot = await getDocs(collection(db, 'activeUsersToday'));
@@ -99,7 +100,7 @@ function AdminPage() {
     }
   };
 
-  // מסנן לפי שם מלא או אימייל
+  // סינון
   const filtered = users.filter(
     (u) =>
       u.fullName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -108,7 +109,7 @@ function AdminPage() {
 
   const totalUsers = users.length;
 
-  // נתונים לגרף העמודות הראשון: משתמשים, סיכומים, פעילים היום
+  // נתונים לגרף העמודות
   const barData = [
     { name: 'משתמשים', value: totalUsers },
     { name: 'סיכומים', value: summariesCount },
@@ -122,8 +123,8 @@ function AdminPage() {
         <h2 className={styles.pageTitle}>ניהול המערכת</h2>
 
         <div className={styles.adminContent}>
+          {/* ===== גרפים ===== */}
           <div className={styles.charts}>
-            {/* ===== גרף עמודות ראשון ===== */}
             <div className={styles.chartBox}>
               <h3 className={styles.chartTitle}>סיכום כללי</h3>
               <ResponsiveContainer width="100%" height={250}>
@@ -137,9 +138,8 @@ function AdminPage() {
               </ResponsiveContainer>
             </div>
 
-            {/* ===== גרף שני: חלוקת משתמשים לפי תואר ===== */}
             <div className={styles.chartBox}>
-              <h3 className={styles.chartTitle}>חלוקת משתמשים לפי תואר</h3>
+              <h3 className={styles.chartTitle}>חלוקת תארים</h3>
               <ResponsiveContainer width="100%" height={270}>
                 <PieChart>
                   <Pie
@@ -149,9 +149,7 @@ function AdminPage() {
                     cx="50%"
                     cy="50%"
                     outerRadius={80}
-                    label={({ name, percent }) =>
-                      `${name} ${(percent * 100).toFixed(0)}%`
-                    }
+                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                   >
                     {degreeData.map((entry, idx) => (
                       <Cell key={entry.name} fill={DEGREE_COLORS[idx % DEGREE_COLORS.length]} />
@@ -164,41 +162,33 @@ function AdminPage() {
             </div>
           </div>
 
-          {/* ===== כפתורים סגולים מתחת לגרפים ===== */}
+          {/* ===== כפתורים מתחת לגרפים ===== */}
           <div className={styles.actions}>
-            <button className={styles.actionBtn}>
-              סך־כל משתמשים רשומים: {totalUsers}
-            </button>
-            <button className={styles.actionBtn}>
-              סיכומים שהועלו למערכת: {summariesCount}
-            </button>
-            <button className={styles.actionBtn}>
-              {/* כאן אפשר להוסיף סופר לפוסטים בפורומים במידת הצורך */}
-              פוסטים בפורומים
-            </button>
-            <button className={styles.actionBtn}>
-              משתמשים פעילים היום: {activeUsersToday}
-            </button>
+            <button className={styles.actionBtn}>סה״כ משתמשים: {totalUsers}</button>
+            <button className={styles.actionBtn}>סיכומים: {summariesCount}</button>
+            <button className={styles.actionBtn}>פוסטים בפורומים</button>
+            <button className={styles.actionBtn}>פעילים היום: {activeUsersToday}</button>
           </div>
         </div>
 
-        {/* ===== טבלת ניהול משתמשים מתחת ===== */}
+        {/* ===== טבלת ניהול ===== */}
         <div className={styles.section}>
-          <h3>👥 ניהול משתמשים</h3>
+          <h3 className={styles.sectionTitle}>👥 ניהול משתמשים</h3>
           <input
             type="text"
-            placeholder="חיפוש לפי אימייל"
+            placeholder="חיפוש לפי אימייל או שם מלא"
             className={styles.searchInput}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+
           <table className={styles.usersTable}>
             <thead>
               <tr>
                 <th>UID</th>
                 <th>שם מלא</th>
                 <th>אימייל</th>
-                <th>תפקיד Admin</th>
+                <th>Admin</th>
                 <th>מחיקה</th>
               </tr>
             </thead>
@@ -207,18 +197,19 @@ function AdminPage() {
                 <tr key={user.uid}>
                   <td>{user.uid}</td>
                   <td>
-            {user.fullName || 
-             user.displayName || 
-             (user.firstName && user.lastName ? `${user.firstName} ${user.lastName}` : '') || 
-             'לא הוגדר'}
-          </td>
+                    {user.fullName ||
+                      user.displayName ||
+                      (user.firstName && user.lastName
+                        ? `${user.firstName} ${user.lastName}`
+                        : 'לא הוגדר')}
+                  </td>
                   <td>{user.email}</td>
                   <td>
                     <button
                       className={styles.toggleBtn}
                       onClick={() => toggleAdmin(user.uid, user.isAdmin)}
                     >
-                      {user.isAdmin ? 'הסר Admin' : 'הפוך ל-Admin'}
+                      {user.isAdmin ? 'הסר Admin' : 'הפוך ל־Admin'}
                     </button>
                   </td>
                   <td>
@@ -227,16 +218,13 @@ function AdminPage() {
                     </button>
                   </td>
                 </tr>
-
-                
               ))}
             </tbody>
           </table>
         </div>
       </div>
-      <footer className={styles.footer}>
-      © 2025 SmartStudy | כל הזכויות שמורות
-    </footer>
+
+      <footer className={styles.footer}>© 2025 SmartStudy | כל הזכויות שמורות</footer>
     </>
   );
 }

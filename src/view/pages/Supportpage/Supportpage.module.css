@@ -14,7 +14,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
-
+  background: linear-gradient(135deg, #1e293b, #0f172a);
   width: 100%;
   min-height: 100vh;
   padding-top: 80px;     /* ריווח עליון ל־Navbar */

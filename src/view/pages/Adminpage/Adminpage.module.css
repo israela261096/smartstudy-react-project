@@ -1,7 +1,7 @@
 .adminContainer {
   width: 100vw;
   min-height: calc(100vh - 70px);
-  background: linear-gradient(135deg, #1e293b);
+  background: linear-gradient(135deg, #1e293b, #0f172a);
   padding: 80px 20px 40px 20px;
   box-sizing: border-box;
   margin: 0;
@@ -300,7 +300,7 @@
 
 .footer {
   width: 100%;
-  padding: 12px 0;    
+  padding: 10px 0;    
   border-top: 1px solid #E5E7EB;  
   color: #4B5563;                   
   font-size: 14px;
