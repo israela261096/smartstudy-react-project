@@ -187,7 +187,7 @@ function AdminPage() {
           <h3>👥 ניהול משתמשים</h3>
           <input
             type="text"
-            placeholder="חיפוש לפי שם מלא או אימייל"
+            placeholder="חיפוש לפי אימייל"
             className={styles.searchInput}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -206,7 +206,12 @@ function AdminPage() {
               {filtered.map((user) => (
                 <tr key={user.uid}>
                   <td>{user.uid}</td>
-                  <td>{user.fullName || '-'}</td>
+                  <td>
+            {user.fullName || 
+             user.displayName || 
+             (user.firstName && user.lastName ? `${user.firstName} ${user.lastName}` : '') || 
+             'לא הוגדר'}
+          </td>
                   <td>{user.email}</td>
                   <td>
                     <button
