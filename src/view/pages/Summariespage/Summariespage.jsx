@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import { auth, db, storage } from '../../../firebase';
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from 'firebase/storage';
+import { auth, db } from '../../../firebase';
 import { collection, addDoc, Timestamp, getDocs } from 'firebase/firestore';
 import Navbar from '../../components/Navbar/Navbar';
 import styles from './SummariesPage.module.css';
@@ -23,14 +18,12 @@ function SummariesPage() {
     setProgress(0);
   };
 
-  const handleUpload = () => {
-    console.log('handleUpload נקרא');
-    
+  const handleUpload = async () => {
     if (!selectedFile) {
       alert('אנא בחרי קובץ');
       return;
     }
-    
+
     if (!uploadCourseName.trim()) {
       alert('אנא הזיני שם קורס');
       return;
@@ -42,10 +35,6 @@ function SummariesPage() {
       return;
     }
 
-    console.log('User:', user.uid);
-    console.log('Storage config:', storage.app.options);
-    console.log('Selected file:', selectedFile);
-
     const allowedTypes = ['application/pdf', 'text/plain', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
     if (!allowedTypes.includes(selectedFile.type)) {
       alert('סוג קובץ לא נתמך. אנא בחרי PDF, Word או קובץ טקסט');
@@ -53,61 +42,49 @@ function SummariesPage() {
     }
 
     setIsUploading(true);
+    setProgress(0);
 
-    const timestamp = Date.now();
-    const fileName = `${timestamp}_${selectedFile.name}`;
-    const storageRef = ref(storage, `summaries/${user.uid}/${fileName}`);
-    const uploadTask = uploadBytesResumable(storageRef, selectedFile);
+    try {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+      formData.append("upload_preset", "smartstudy_uploads");
 
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        const pct = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgress(Math.floor(pct));
-        console.log(`התקדמות העלאה: ${Math.floor(pct)}%`);
-      },
-      (error) => {
-        console.error('שגיאה בהעלאה ל-Storage:', error);
-        alert('אירעה שגיאה בהעלאה: ' + error.message);
-        setIsUploading(false);
-        setProgress(0);
-      },
-      async () => {
-        try {
-          console.log('העלאה הסתיימה, מקבל URL...');
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-          console.log('URL התקבל:', downloadURL);
-          
-          const docData = {
-            uid: user.uid,
-            courseName: uploadCourseName.trim(),
-            fileName: selectedFile.name,
-            fileURL: downloadURL,
-            uploadedAt: Timestamp.now(),
-          };
-          
-          console.log('שומר ב-Firestore:', docData);
-          await addDoc(collection(db, 'summaries'), docData);
-          
-          alert(`הקובץ "${selectedFile.name}" הועלה ונשמר בהצלחה ✅`);
-          
-          setSelectedFile(null);
-          setUploadCourseName('');
-          setProgress(0);
-          setIsUploading(false);
-          setShowUploadForm(false);
-          
-          if (searchCourseName.trim() === uploadCourseName.trim()) {
-            fetchSummariesByCourse();
-          }
-          
-        } catch (fireErr) {
-          console.error('שגיאה ב-Firestore:', fireErr);
-          alert('הקובץ הועלה ל-Storage אך לא נשמר ב-Firestore: ' + fireErr.message);
-          setIsUploading(false);
-        }
+      const res = await fetch("https://api.cloudinary.com/v1_1/dpubtxvqb/auto/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (!data.secure_url) throw new Error("העלאה נכשלה");
+
+      const downloadURL = data.secure_url;
+
+      const docData = {
+        uid: user.uid,
+        courseName: uploadCourseName.trim(),
+        fileName: selectedFile.name,
+        fileURL: downloadURL,
+        uploadedAt: Timestamp.now(),
+      };
+
+      await addDoc(collection(db, 'summaries'), docData);
+
+      alert(`הקובץ "${selectedFile.name}" הועלה ונשמר בהצלחה ✅`);
+      setSelectedFile(null);
+      setUploadCourseName('');
+      setProgress(0);
+      setIsUploading(false);
+      setShowUploadForm(false);
+
+      if (searchCourseName.trim() === uploadCourseName.trim()) {
+        fetchSummariesByCourse();
       }
-    );
+
+    } catch (error) {
+      console.error('שגיאה בהעלאה:', error);
+      alert('אירעה שגיאה בהעלאה: ' + error.message);
+      setIsUploading(false);
+    }
   };
 
   const fetchSummariesByCourse = async () => {
@@ -115,23 +92,19 @@ function SummariesPage() {
       alert('אנא הזיני שם קורס כדי לראות סיכומים');
       return;
     }
-    
+
     try {
-      console.log('מחפש סיכומים עבור קורס:', searchCourseName);
       const snapshot = await getDocs(collection(db, 'summaries'));
-      console.log('נמצאו מסמכים:', snapshot.docs.length);
-      
       const user = auth.currentUser;
       const filtered = snapshot.docs
         .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .filter((s) => 
+        .filter((s) =>
           s.courseName.toLowerCase().includes(searchCourseName.toLowerCase().trim()) &&
           s.uid === user?.uid
         );
-      
-      console.log('סיכומים מסוננים:', filtered);
+
       setFetchedSummaries(filtered);
-      
+
     } catch (err) {
       console.error('שגיאה בשליפת סיכומים:', err);
       alert('אירעה שגיאה בשליפת סיכומים: ' + err.message);
@@ -146,12 +119,11 @@ function SummariesPage() {
           <div className={styles.content}>
             <h2 className={styles.pageTitle}>מאגר סיכומים</h2>
 
-            {/* כרטיס מרכזי לחיפוש וצפייה */}
             <div className={styles.mainCard}>
               <div className={styles.cardIcon}>📄</div>
               <h3 className={styles.cardTitle}>צפייה בסיכומים לפי קורס</h3>
               <p className={styles.cardSubtitle}>ניתוח נתונים, סטטיסטיקה, ניהול פרויקטים</p>
-              
+
               <div className={styles.searchContainer}>
                 <input
                   type="text"
@@ -168,7 +140,7 @@ function SummariesPage() {
                   חפש סיכומים לפי קורס 🔍
                 </button>
               </div>
-              
+
               {fetchedSummaries.length > 0 && (
                 <div className={styles.summariesResults}>
                   <ul className={styles.summariesList}>
@@ -195,7 +167,7 @@ function SummariesPage() {
                   </ul>
                 </div>
               )}
-              
+
               {searchCourseName && fetchedSummaries.length === 0 && (
                 <p className={styles.noSummaries}>
                   לא נמצאו סיכומים עבור קורס "{searchCourseName}".
@@ -203,7 +175,6 @@ function SummariesPage() {
               )}
             </div>
 
-            {/* לחצן הוספת סיכום חדש */}
             <button
               type="button"
               onClick={() => setShowUploadForm(!showUploadForm)}
@@ -212,7 +183,6 @@ function SummariesPage() {
               הוסף סיכום חדש +
             </button>
 
-            {/* טופס העלאה (מוצג רק כשלוחצים על הלחצן) */}
             {showUploadForm && (
               <div className={styles.uploadForm}>
                 <h3>העלה סיכום חדש ➕</h3>
@@ -265,8 +235,8 @@ function SummariesPage() {
         </div>
       </div>
       <footer className={styles.footer}>
-            © 2025 SmartStudy | כל הזכויות שמורות
-            </footer>
+        © 2025 SmartStudy | כל הזכויות שמורות
+      </footer>
     </>
   );
 }
