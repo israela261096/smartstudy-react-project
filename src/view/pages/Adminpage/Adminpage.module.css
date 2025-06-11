@@ -308,3 +308,37 @@
   direction: rtl;                   
   box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+  /* הסתרת ה־sidebar/ניווט הראשי */
+  .sidebar,                 /* אם הקלאס שלך הוא sidebar */
+  nav,                       /* או תג nav כללי */
+  .mainMenu,                 /* תחליפי בשמך הממשי אם שונה */
+  .leftPanel {               /* או כל קלאס שמייצג את העמודה */
+    display: none !important;
+  }
+
+  /* גריד־קונטיינר (או ה־wrapper) יתפס 100% רוחב */
+  .adminWrapper,             /* תחליפי לקלאס של ה־wrapper שלך */
+  .adminContent,             /* או התוכן הראשי */
+  main,                      /* תחליפי לפי הסוגר שלך */
+  .contentContainer {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 10px;         /* קצת פדינג צדדי אם צריך */
+    box-sizing: border-box;
+  }
+
+  /* תפריט המשתמש (dropdown) יתפס כמעט כל הרוחב */
+  .userDropdown,             /* החליפי את הקלאס שלך */
+  .profileMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: calc(100% - 16px) !important;
+    margin: 8px !important;
+    padding: 16px !important;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+  }
+}
