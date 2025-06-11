@@ -1,36 +1,39 @@
-# SmartStudy
+# 📚 SmartStudy
 
-**Short description**  
-SmartStudy is a React-based learning platform that lets students share summaries, ask questions in forums, find study partners, and get technical support— all in one place.
-
----
-
-## 🚀 Features
-
-- **Course Summaries**  
-  – Browse, upload and download community-submitted course summaries.  
-- **Forums**  
-  – Ask questions, share tips, report technical issues, or find study partners.  
-- **Support Center**  
-  – FAQs, user guide, contact form, and a full site map.  
-- **Personal Dashboard**  
-  – View your uploaded summaries, saved posts, and account settings.  
-- **Admin Panel**  
-  – Site administrators can view user statistics, manage users, and monitor activity.  
-- **Responsive Design**  
-  – Fully mobile-friendly, with RTL (Hebrew) support.
+## תיאור קצר
+SmartStudy היא פלטפורמת לימודים מבוססת React + Vite שמאפשרת לסטודנטים לשתף סיכומים, לשאול שאלות בפורומים, למצוא שותפים ללמידה ולקבל תמיכה טכנית – הכול במקום אחד.
 
 ---
 
-## 📺 Live Demo
+## 🚀 תכונות עיקריות
 
-If a live demo is available, link it here:  
-[https://your-demo-url.com](https://your-demo-url.com)
+- **מאגר סיכומים**  
+  עיון, העלאה והורדה של סיכומי קורסים שהועלו על ידי הקהילה.
+
+- **פורומים**  
+  לשאול שאלות, לשתף טיפים, לדווח על בעיות טכניות או למצוא שותפי למידה.
+
+- **מרכז תמיכה**  
+  כולל שאלות נפוצות (FAQ), מדריך משתמש, טופס יצירת קשר ומפת אתר.
+
+- **אזור אישי**  
+  צפייה בסיכומים שהעלית, פוסטים שמורים והגדרות חשבון.
+
+- **איזור ניהול**  
+  למנהלי האתר – צפייה בסטטיסטיקות משתמשים, ניהול משתמשים ומעקב פעילות.
+
+- **עיצוב רספונסיבי**  
+  מותאם באופן מלא למובייל, כולל תמיכה מלאה בעברית (RTL).
 
 ---
 
-## 🛠️ Local Installation & Run
+## 📺 הדגמה חיה (Live Demo) - https://smartstudy-app-c8e2e.web.app
 
-1. **Clone the repo**  
-   ```bash
-   git clone https://github.com/israela261096/smartstudy-react-project.git
+> ⚠️ פרויקט זה מיועד להצגה בלימודים בלבד ומורץ בסביבה מקומית (Localhost) באמצעות Vite.
+
+### 🔧 הוראות הרצה מקומית
+
+#### 1. שכפול הריפוזיטורי
+
+```bash
+git clone https://github.com/israela261096/smartstudy-react-project.git
