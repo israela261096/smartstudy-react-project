@@ -27,7 +27,7 @@ SmartStudy היא פלטפורמת לימודים מבוססת React + Vite שמ
 
 ---
 
-## 📺 הדגמה חיה (Live Demo)
+## 📺 הדגמה חיה (Live Demo) - https://smartstudy-app-c8e2e.web.app
 
 > ⚠️ פרויקט זה מיועד להצגה בלימודים בלבד ומורץ בסביבה מקומית (Localhost) באמצעות Vite.
 
